@@ -1,5 +1,5 @@
 <?php
-
+use dosamigos\editable\Editable;
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
@@ -14,7 +14,8 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'name')->textarea(['rows' => 6]) ?>
 
-    <?= $form->field($model, 'address')->textarea(['rows' => 6]) ?>
+
+    <?= $form->field($model, 'address')->widget(Editable::className(), [ 'url' => 'site/test', 'type' => 'address' ]);?>
 
     <?= $form->field($model, 'tel')->textInput() ?>
 
