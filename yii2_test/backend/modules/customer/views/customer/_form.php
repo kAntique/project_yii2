@@ -1,5 +1,5 @@
 <?php
-
+use dosamigos\editable\Editable;
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
@@ -14,9 +14,13 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'address')->textarea(['rows' => 6]) ?>
-
-    <?= $form->field($model, 'birth_date')->textInput() ?>
+    
+    <?= $form->field($model, 'address')->widget(Editable::className(), [ 'url' => 'site/test', 'type' => 'address' ]);?>
+    <?php echo '<b>วันเดือนปีเกิด :</b>'; ?>
+    <?= Editable::widget([ 'model' => $model, 'attribute' => 'birth_date',
+     'url' => 'site/test', 'type' => 'datetime', 'mode' => 'pop',
+      'clientOptions' => [ 'placement' => 'right', 'format' => 'yyyy-mm-dd hh:ii',
+      'viewformat' => 'dd/mm/yyyy hh:ii', 'datetimepicker' => [ 'orientation' => 'top auto' ] ] ]);?>
 
     <?= $form->field($model, 'tel')->textInput() ?>
 
