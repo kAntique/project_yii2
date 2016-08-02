@@ -18,6 +18,9 @@ return [
         'customer' => [
             'class' => 'backend\modules\customer\Module',
         ],
+        'room' => [
+            'class' => 'backend\modules\room\Module',
+        ],
     ],
     'components' => [
         'request' => [
