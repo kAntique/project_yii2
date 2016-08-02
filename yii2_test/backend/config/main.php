@@ -15,6 +15,9 @@ return [
       'company' => [
             'class' => 'backend\modules\company\Module',
         ],
+        'customer' => [
+            'class' => 'backend\modules\customer\Module',
+        ],
     ],
     'components' => [
         'request' => [
