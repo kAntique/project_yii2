@@ -31,7 +31,7 @@ class Room extends \yii\db\ActiveRecord
     {
         return [
             [['name', 'type', 'color', 'detail', 'picture'], 'required'],
-            [['name', 'type', 'color'], 'integer'],
+            [['name', 'type', 'color'], 'string'],
             [['detail', 'picture'], 'string', 'max' => 100],
         ];
     }
