@@ -33,6 +33,7 @@
                     ['label' => 'Menu Yii2', 'options' => ['class' => 'header']],
                     ['label' => 'Company', 'icon' => 'fa fa-file', 'url' => ['/company/company']],
                     ['label' => 'Customer', 'icon' => 'fa fa-file', 'url' => ['/customer/customer']],
+                      ['label' => 'Room', 'icon' => 'fa fa-file', 'url' => ['/room/room']],
                     ['label' => 'Login', 'url' => ['site/login'], 'visible' => Yii::$app->user->isGuest],
                     [
                         'label' => 'Same tools',
