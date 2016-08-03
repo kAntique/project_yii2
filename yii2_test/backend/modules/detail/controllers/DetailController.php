@@ -77,15 +77,16 @@ class DetailController extends Controller
     public function actionCreate()
     {
         $model = new Detail();
-        $idQuotation = Quotation::find('id')->orderBy(['id' => 'SORT_ASC'])->count();
-        $idQuotation = $idQuotation + 1;
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
 
-        return   $this->redirect(['view', 'id' => $model->id]);
+        $q = Quotation::find('id')->orderBy(['id' => 'SORT_DESC'])->one();
+      //  var_dump($q->id);
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+           $model = new Detail();
+        //return   $this->redirect(['view', 'id' => $model->id]);
         } else {
             return $this->renderAjax('create', [
                 'model' => $model,
-                  'idQuotation' => $idQuotation,
+                  'q' => $q->id,
             ]);
         }
     }

@@ -27,7 +27,7 @@ $this->registerJs(
 
 
 
-<?= $form->field($model, 'quotation_id')->textInput([ 'value' => 'PNS-Qu-1']) ?>
+<?= $form->field($model, 'quotation_id')->textInput([ 'type'=>'hidden','value' =>$q ]) ?>
     <!--?= $form->field($model, 'quotation_id')->dropDownList($model,['prompt'=>'Select quotation']) ?-->
 
     <!--?= $form->field($model, 'receipt_id')->dropDownList($model,['prompt'=>'Select quotation']) ?-->

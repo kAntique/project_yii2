@@ -122,7 +122,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
 
      <!-- Html::button('ExportPDF',['value'=>Url::to('index.php?r=detail/detail/create'),'class'=> 'btn btn-success','id'=> 'modalButton'])  ?> -->
-     <!--?= DetailView::widget([
+     <?= DetailView::widget([
          'model' => $model,
          'attributes' => [
              'id',
@@ -134,5 +134,5 @@ $this->params['breadcrumbs'][] = $this->title;
              'payment:ntext',
              'guaruantee',
          ],
-     ]) ?-->
+     ]) ?>
 </div>

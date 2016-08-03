@@ -53,10 +53,6 @@ $this->params['breadcrumbs'][] = $this->title;
 
 
 
-    <!-- Render create form -->
-        <?= $this->render('_form', [
-            'model' => $model,
-        ]) ?>
 
 
 
