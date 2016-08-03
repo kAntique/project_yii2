@@ -52,8 +52,20 @@ class DetailController extends Controller
      */
     public function actionView($id)
     {
+      $model = new Detail();
+
+        if ($model->load(Yii::$app->request->post()) && $model->save())
+        {
+            $model = new Detail(); //reset model
+        }
+
+        $searchModel = new DetailSearch();
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+
         return $this->render('view', [
             'model' => $this->findModel($id),
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
         ]);
     }
 

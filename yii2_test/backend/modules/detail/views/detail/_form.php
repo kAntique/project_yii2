@@ -5,22 +5,29 @@ use yii\widgets\ActiveForm;
 use yii\helpers\ArrayHelper;
 use backend\modules\quotation\models\Quotation;
 use backend\modules\receipt\models\Receipt;
-
+use yii\widgets\Pjax;
 /* @var $this yii\web\View */
 /* @var $model backend\modules\detail\models\Detail */
 /* @var $form yii\widgets\ActiveForm */
 $this->title = $model->id;
+$this->registerJs(
+   '$("document").ready(function(){
+        $("#new_detail").on("pjax:end", function() {
+            $.pjax.reload({container:"#detail"});  //Reload GridView
+        });
+    });'
+);
 ?>
 
 <div class="detail-form">
 
+<?php yii\widgets\Pjax::begin(['id' => 'new_detail']) ?>
     <?php $form = ActiveForm::begin(); ?>
 
 
-      <?= $form->field($model, 'id_doc_qu')->textInput(['readonly' => true, 'value' => 'PNS-Qu-'.$idQuotation]) ?>
-      <?= $form->field($model, 'id_doc_re')->textInput(['readonly' => true, 'value' => 'PNS-Qu-'.$idQuotation]) ?>
 
 
+<?= $form->field($model, 'quotation_id')->textInput([ 'value' => 'PNS-Qu-1']) ?>
     <!--?= $form->field($model, 'quotation_id')->dropDownList($model,['prompt'=>'Select quotation']) ?-->
 
     <!--?= $form->field($model, 'receipt_id')->dropDownList($model,['prompt'=>'Select quotation']) ?-->
@@ -35,8 +42,10 @@ $this->title = $model->id;
 
     <div class="form-group">
         <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
-    </div>
 
+
+    </div>
     <?php ActiveForm::end(); ?>
+  <?php yii\widgets\Pjax::end() ?>
 
 </div>

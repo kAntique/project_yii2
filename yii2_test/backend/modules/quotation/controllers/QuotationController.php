@@ -62,8 +62,14 @@ class QuotationController extends Controller
      */
     public function actionView($id, $id_company, $id_customer)
     {
+      $model = $this->findModel($id, $id_company, $id_customer);
+        $user = Customer::find('name','address')->where(['id' => $model->id])->all();
+          $detail = Detail::find()->where(['not',['quotation_id' => null]])->andWhere(['receipt_id' => null])->andWhere(['quotation_id' => $model->id])->all();
         return $this->render('view', [
             'model' => $this->findModel($id, $id_company, $id_customer),
+            'user'=>$user,
+            'model'=>$model,
+          'detail'  =>$detail,
         ]);
     }
 
@@ -85,7 +91,7 @@ class QuotationController extends Controller
             return $this->render('create', [
                 'model' => $model,
                 'q' => $q,
-              
+
             ]);
         }
     }
