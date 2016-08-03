@@ -1,5 +1,5 @@
 <?php
-use dosamigos\editable\Editable;
+
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
@@ -14,17 +14,18 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
 
-    
-    <?= $form->field($model, 'address')->widget(Editable::className(), [ 'url' => 'site/test', 'type' => 'address' ]);?>
-    <?php echo '<b>วันเดือนปีเกิด :</b>'; ?>
-    <?= Editable::widget([ 'model' => $model, 'attribute' => 'birth_date',
-     'url' => 'site/test', 'type' => 'datetime', 'mode' => 'pop',
-      'clientOptions' => [ 'placement' => 'right', 'format' => 'yyyy-mm-dd hh:ii',
-      'viewformat' => 'dd/mm/yyyy hh:ii', 'datetimepicker' => [ 'orientation' => 'top auto' ] ] ]);?>
+    <?= $form->field($model, 'address')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'tel')->textInput() ?>
+    <?= $form->field($model, 'phone_number')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'age')->textInput() ?>
+      <?=  $form->field($model, 'email')->input('email');  ?>
+
+
+    <?= $form->field($model, 'website')->textInput(['maxlength' => true]) ?>
+
+    <?= $form->field($model, 'bank_info')->textInput(['maxlength' => true]) ?>
+
+    <?= $form->field($model, 'tax')->textarea(['rows' => 6]) ?>
 
     <div class="form-group">
         <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>

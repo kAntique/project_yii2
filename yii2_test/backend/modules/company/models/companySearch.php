@@ -8,9 +8,9 @@ use yii\data\ActiveDataProvider;
 use backend\modules\company\models\Company;
 
 /**
- * companySearch represents the model behind the search form about `backend\modules\company\models\Company`.
+ * CompanySearch represents the model behind the search form about `backend\modules\company\models\Company`.
  */
-class companySearch extends Company
+class CompanySearch extends Company
 {
     /**
      * @inheritdoc
@@ -18,8 +18,8 @@ class companySearch extends Company
     public function rules()
     {
         return [
-            [['id', 'tel'], 'integer'],
-            [['name', 'address'], 'safe'],
+            [['id'], 'integer'],
+            [['name', 'address', 'phone_number', 'email', 'website', 'bank_info', 'pic_stamp', 'pic_logo', 'pic_signature', 'tax', 'manager'], 'safe'],
         ];
     }
 
@@ -60,11 +60,19 @@ class companySearch extends Company
         // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
-            'tel' => $this->tel,
         ]);
 
         $query->andFilterWhere(['like', 'name', $this->name])
-            ->andFilterWhere(['like', 'address', $this->address]);
+            ->andFilterWhere(['like', 'address', $this->address])
+            ->andFilterWhere(['like', 'phone_number', $this->phone_number])
+            ->andFilterWhere(['like', 'email', $this->email])
+            ->andFilterWhere(['like', 'website', $this->website])
+            ->andFilterWhere(['like', 'bank_info', $this->bank_info])
+            ->andFilterWhere(['like', 'pic_stamp', $this->pic_stamp])
+            ->andFilterWhere(['like', 'pic_logo', $this->pic_logo])
+            ->andFilterWhere(['like', 'pic_signature', $this->pic_signature])
+            ->andFilterWhere(['like', 'tax', $this->tax])
+            ->andFilterWhere(['like', 'manager', $this->manager]);
 
         return $dataProvider;
     }

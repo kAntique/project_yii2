@@ -4,6 +4,7 @@ $params = array_merge(
     require(__DIR__ . '/../../common/config/params-local.php'),
     require(__DIR__ . '/params.php'),
     require(__DIR__ . '/params-local.php')
+
 );
 
 return [
@@ -15,24 +16,49 @@ return [
       'company' => [
             'class' => 'backend\modules\company\Module',
         ],
-        'customer' => [
-            'class' => 'backend\modules\customer\Module',
+      'customer' => [
+              'class' => 'backend\modules\customer\Module',
+          ],
+
+          'receipt' => [
+            'class' => 'backend\modules\receipt\Module',
         ],
-        'room' => [
-            'class' => 'backend\modules\room\Module',
+        'doing' => [
+            'class' => 'backend\modules\receipt\doing\Module',
         ],
-    ],
+        'detail' => [
+            'class' => 'backend\modules\detail\Module',
+        ],
+        'quotation' => [
+           'class' => 'backend\modules\quotation\Module',
+       ],
+       'gridview' =>  [
+           'class' => '\kartik\grid\Module'
+           
+       ],
+
+       'pdfjs' => [
+       'class' => '\yii2assets\pdfjs\Module',
+        ],
+
+   ],
+
+
     'components' => [
+      'view' => [
+       'theme' => [
+           'pathMap' => [
+              '@app/views' => '@backend/themes/themes_doc_manage/views'
+           ],
+       ],
+
+  ],
+
+
+
         'request' => [
             'csrfParam' => '_csrf-backend',
         ],
-        'view' => [
-         'theme' => [
-             'pathMap' => [
-                '@app/views' => '@backend/themes/adminLTE/views'
-             ],
-         ],
-    ],
         'user' => [
             'identityClass' => 'common\models\User',
             'enableAutoLogin' => true,
@@ -54,6 +80,7 @@ return [
         'errorHandler' => [
             'errorAction' => 'site/error',
         ],
+
         /*
         'urlManager' => [
             'enablePrettyUrl' => true,
@@ -62,6 +89,8 @@ return [
             ],
         ],
         */
+
     ],
+
     'params' => $params,
 ];

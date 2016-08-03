@@ -18,12 +18,13 @@
         "yiisoft/yii2": ">=2.0.6",
         "yiisoft/yii2-bootstrap": "*",
         "yiisoft/yii2-swiftmailer": "*",
-        "dmstr/yii2-adminlte-asset": "2.*",
-        "2amigos/yii2-editable-widget": "0.1.*",
-        "2amigos/yii2-file-upload-widget": "~1.0",
-        "kartik-v/yii2-widget-colorinput": "*",
-        "2amigos/yii2-selectize-widget": "~1.0",
-        "2amigos/yii2-leaflet-awesome-plugin": "~1.0"
+        "dmstr/yii2-adminlte-asset": "*",
+        "2amigos/yii2-date-picker-widget": "~1.0",
+        "kartik-v/yii2-mpdf": "^1.0",
+        "kartik-v/yii2-widgets": "*",
+       "kartik-v/yii2-grid": "*",
+        "rundiz/number": "^1.1"
+
     },
     "require-dev": {
         "yiisoft/yii2-codeception": "*",

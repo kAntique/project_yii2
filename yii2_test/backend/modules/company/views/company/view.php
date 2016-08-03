@@ -29,9 +29,17 @@ $this->params['breadcrumbs'][] = $this->title;
         'model' => $model,
         'attributes' => [
             'id',
-            'name:ntext',
-            'address:ntext',
-            'tel',
+            'name',
+            'address',
+            'phone_number',
+            'email:email',
+            'website',
+            'bank_info',
+            'pic_stamp',
+            'pic_logo',
+            'pic_signature',
+            'tax:ntext',
+            'manager',
         ],
     ]) ?>
 

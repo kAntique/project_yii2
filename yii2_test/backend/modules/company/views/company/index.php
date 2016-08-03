@@ -4,7 +4,7 @@ use yii\helpers\Html;
 use yii\grid\GridView;
 
 /* @var $this yii\web\View */
-/* @var $searchModel backend\modules\company\models\companySearch */
+/* @var $searchModel backend\modules\company\models\CompanySearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
 $this->title = 'Companies';
@@ -25,9 +25,17 @@ $this->params['breadcrumbs'][] = $this->title;
             ['class' => 'yii\grid\SerialColumn'],
 
             'id',
-            'name:ntext',
-            'address:ntext',
-            'tel',
+            'name',
+            'address',
+            'phone_number',
+            'email:email',
+            // 'website',
+            // 'bank_info',
+            // 'pic_stamp',
+            // 'pic_logo',
+            // 'pic_signature',
+            // 'tax:ntext',
+            // 'manager',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],

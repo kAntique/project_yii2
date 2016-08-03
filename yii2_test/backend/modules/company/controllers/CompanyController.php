@@ -4,10 +4,11 @@ namespace backend\modules\company\controllers;
 
 use Yii;
 use backend\modules\company\models\Company;
-use backend\modules\company\models\companySearch;
+use backend\modules\company\models\CompanySearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\web\UploadedFile;
 
 /**
  * CompanyController implements the CRUD actions for Company model.
@@ -35,7 +36,7 @@ class CompanyController extends Controller
      */
     public function actionIndex()
     {
-        $searchModel = new companySearch();
+        $searchModel = new CompanySearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
@@ -65,7 +66,24 @@ class CompanyController extends Controller
     {
         $model = new Company();
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+        if ($model->load(Yii::$app->request->post()) ) {
+          $file1 = UploadedFile::getInstance($model,'logocompany_img');
+        $file2 = UploadedFile::getInstance($model,'stampcompany_img');
+        $file3 = UploadedFile::getInstance($model,'signaturecompany_img');
+
+          if ($file1&&$file2&&$file3->size!=0) {
+            $model->pic_logo = $file1->name;
+            $file1->saveAs('uploads/logocompany_img'.$file1->baseName . '.' . $file1->extension);
+            $model->save();
+
+            $model->pic_stamp = $file2->name;
+            $file2->saveAs('uploads/stampcompany_img'.$file2->baseName . '.' . $file2->extension);
+            $model->save();
+
+            $model->pic_signature = $file3->name;
+            $file3->saveAs('uploads/signaturecompany_img'.$file3->baseName . '.' . $file3->extension);
+            $model->save();
+          }
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
             return $this->render('create', [
@@ -84,7 +102,24 @@ class CompanyController extends Controller
     {
         $model = $this->findModel($id);
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+        if ($model->load(Yii::$app->request->post()) ) {
+          $file1=UploadedFile::getInstance($model,'logocompany_img');
+          $file2=UploadedFile::getInstance($model,'stampcompany_img');
+          $file3=UploadedFile::getInstance($model,'signaturecompany_img');
+
+          if ($file1&&$file2&&$file3->size!=0) {
+            $model->pic_logo = $file1->name;
+            $file1->saveAs('uploads/logocompany_img'.$file1->baseName. '.' . $file1->extension);
+            $model->save();
+
+            $model->pic_stamp = $file2->name;
+            $file2->saveAs('uploads/stampcompany_img'.$file1->baseName. '.' . $file2->extension);
+            $model->save();
+
+            $model->pic_signature = $file3->name;
+            $file3->saveAs('uploads/signaturecompany_img'.$file1->baseName. '.' . $file3->extension);
+            $model->save();
+          }
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
             return $this->render('update', [

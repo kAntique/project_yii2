@@ -21,11 +21,15 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'address') ?>
 
-    <?= $form->field($model, 'birth_date') ?>
+    <?= $form->field($model, 'phone_number') ?>
 
-    <?= $form->field($model, 'tel') ?>
+    <?= $form->field($model, 'email') ?>
 
-    <?php // echo $form->field($model, 'age') ?>
+    <?php // echo $form->field($model, 'website') ?>
+
+    <?php // echo $form->field($model, 'bank_info') ?>
+
+    <?php // echo $form->field($model, 'tax') ?>
 
     <div class="form-group">
         <?= Html::submitButton('Search', ['class' => 'btn btn-primary']) ?>
